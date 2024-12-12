@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+
+import ToastProvider     from '@/context/toast';
+
 import './globals.css';
 
 
@@ -19,7 +22,9 @@ export default function RootLayout
 	return (
 		<html lang="es">
 		<body>
-		{ children }
+		<ToastProvider>
+			{ children }
+		</ToastProvider>
 		</body>
 		</html>
 	);

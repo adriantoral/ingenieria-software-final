@@ -13,13 +13,8 @@ import {
 import { ActionReturnType } from '@/types';
 
 
-export async function SigninAction( formdata: FormData ): Promise<ActionReturnType>
+export async function signinAction( usuario: ModelUsuarioSignin ): Promise<ActionReturnType>
 {
-	const usuario: ModelUsuarioSignin = {
-		nombre  : ( formdata.get( 'nombre' ) as string ) || 'Pedro Palotes',
-		password: ( formdata.get( 'password' ) as string ) || ''
-	};
-
 	if ( !usuario.nombre.trim() || !usuario.password.trim() ) return {
 		success: false,
 		error  : 'Nombre y contraseña necesarios'
@@ -39,15 +34,8 @@ export async function SigninAction( formdata: FormData ): Promise<ActionReturnTy
 	};
 }
 
-export async function SignupAction( formdata: FormData ): Promise<ActionReturnType>
+export async function signupAction( usuario: ModelUsuario ): Promise<ActionReturnType>
 {
-	const usuario: ModelUsuario = {
-		isAdmin : false,
-		nombre  : ( formdata.get( 'nombre' ) as string ) || 'Pedro Palotes',
-		password: ( formdata.get( 'password' ) as string ) || '',
-		dni     : '123456789A'
-	};
-
 	if ( !await registrarSesion( usuario ) ) return {
 		success: false,
 		error  : 'Error al registrar al usuario'

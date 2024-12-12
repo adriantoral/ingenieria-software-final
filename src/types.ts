@@ -6,3 +6,7 @@ export type ActionReturnType =
 		success: false
 		error: string
 	}
+
+export type ToastType = {
+	message: string
+}
